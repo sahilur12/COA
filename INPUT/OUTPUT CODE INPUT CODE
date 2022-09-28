@@ -1,0 +1,34 @@
+.MODEL SHALL
+.STACK 100H
+.DATA
+ ENTCHAR DB 0AH,0DH,'ENTER A CHAR:$' 
+ YOCHAR DB 0AH,0DH,'YOUR CHAR:$'
+
+
+
+.CODE
+MAIN PROC
+    MOV AX, @DATA
+    MOV DS, AX
+    
+        LEA DX, ENTCHAR 
+        MOV AH, 9
+        INT 21H 
+        
+       LEA DX, ENTCHAR 
+        MOV AH, 1
+        INT 21H
+        MOV BL,AL
+        
+        LEA DX, YOCHAR
+        MOV AH, 9
+        INT 21H 
+        
+        MOV AH,2
+        MOV DL,BL
+        INT 21H 
+        
+        
+        MOV AX, 4CH
+        INT 21H
+        MAIN ENDP
