@@ -1,0 +1,9 @@
+         TOP:
+         MOV AH,1
+         INT 21H
+         CMP AL, 'A'
+         JE EXIT
+         LOOP TOP
+         EXIT:
+         MOV AH,4CH
+         INT 21H
