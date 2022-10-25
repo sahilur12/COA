@@ -13,7 +13,7 @@ main proc //procedure, works as main function
     mov bh,al 
     
     mov ah,2 //for display integer 
-   mov dl,bl //for display dl register
+   mov dl,bl //for display dl register is used
     int 21h// for calling function & execute
     
     
