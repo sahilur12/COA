@@ -5,7 +5,7 @@
 
 main proc //procedure, works as main function
     mov ah,1 //one user input
-    int 21h //for calling function & execute 
+    int 21h //(interrupt)for calling function & execute 
     mov bl,al //by default all data store in al register 
     
     mov ah,1
