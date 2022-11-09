@@ -1,0 +1,10 @@
+MOV DX,50
+MOV AX,50
+MOV BX,0
+               ;50-40-30-20-............ -10
+TOP:
+SUB AX,10
+SUB DX,AX
+CMP AX,BX
+
+JG TOP
