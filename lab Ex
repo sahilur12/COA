@@ -1,0 +1,73 @@
+.model small
+.stack 100h
+.data
+var1 db "Enter input for binnary acceptance :$"
+var2 db 0dh,0ah, "After reverse :$"
+var3 db 0dh,0ah, "Entered input is Wrong$"
+
+.code
+main proc
+
+    call key
+    call rev
+    
+    exit:
+    mov ah,4ch
+    int 21h 
+main endp
+
+rev proc
+        
+    top:
+    lea dx,var2
+    mov ah,9
+    int 21h
+                    
+    alter:     
+    pop dx
+    mov ah,2
+    cmp sp,0100h
+    je exit
+    int 21h
+    jmp alter 
+    
+   rev endp
+   ret 
+
+key proc
+        
+    go:
+    
+    mov ax,@data
+    mov ds,ax
+    lea dx,var1
+    mov ah,9
+    int 21h
+    
+    xor bx,bx
+    mov ah,1
+ 
+    input:
+    int 21h
+    mov bl,al 
+    cmp bl,0dh
+    je top:
+    cmp bl,"0"
+    jl invalid
+    
+    cmp bl,"1"
+    jg invalid
+    push bx
+    jmp input
+ 
+    invalid:
+    lea dx,var3
+    mov ah,9
+    int 21h
+    jmp go:
+        
+    key endp
+   ret
+
+
+end main
